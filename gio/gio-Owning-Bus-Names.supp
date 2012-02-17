@@ -1,0 +1,64 @@
+# -*- tab-width: 3; indent-tabs-mode: nil -*-
+#
+# Copyright (C) 2012  Daniel Trebbien
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+# http://developer.gnome.org/gio/stable/gio-Owning-Bus-Names.html
+
+# Failure to unown the bus name with g_bus_unown_name() will be detected by
+# a leaked g_strdup() and g_malloc0_n() in g_bus_own_name().
+# See:  https://bugzilla.gnome.org/show_bug.cgi?id=670307
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   ...
+   fun:g_bus_get
+   fun:g_bus_own_name
+}
+
+# static GHashTable `map_id_to_client'
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   ...
+   fun:g_hash_table_new
+   fun:g_bus_own_name
+}
+
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   ...
+   fun:g_main_context_ref_thread_default
+   fun:g_bus_own_name
+}
+
+# static GHashTable `map_id_to_client'
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   ...
+   fun:g_hash_table_new
+   fun:g_bus_own_name_on_connection
+}
+
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   ...
+   fun:g_variant_new
+   fun:g_bus_unown_name
+}
