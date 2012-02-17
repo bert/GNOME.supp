@@ -4,13 +4,13 @@ pango_supp_FILES := $(wildcard pango/*.supp)
 gail_supp_FILES := $(wildcard gail/*.supp)
 gdk_supp_FILES := $(wildcard gdk/*.supp)
 gtk_supp_FILES := $(wildcard gtk+/*.supp)
-gtk3_supp_FILES := $(wildcard gtk+/3.x/*.supp)
+gtk3_supp_FILES := gtk.supp $(wildcard gtk+/3.x/*.supp)
 gtksourceview_supp_FILES := $(wildcard gtksourceview/*.supp)
 
-BASE_GENERATED_SUPP_FILES = glib.supp gio.supp pango.supp gail.supp gdk.supp gtk.supp gtk3.supp gtksourceview.supp
+BASE_GENERATED_SUPP_FILES = glib.supp gio.supp pango.supp gail.supp gdk.supp gtk3.supp gtksourceview.supp
 base_supp_FILES = glibc.supp fontconfig.supp $(BASE_GENERATED_SUPP_FILES)
 
-ALL_GENERATED_SUPP_FILES = $(BASE_GENERATED_SUPP_FILES) base.supp
+ALL_GENERATED_SUPP_FILES = $(BASE_GENERATED_SUPP_FILES) gtk.supp base.supp
 
 .PHONY: all clean
 
