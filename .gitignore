@@ -1,0 +1,5 @@
+gio.supp
+glib.supp
+gtk3.supp
+gtksourceview.supp
+gtk.supp
